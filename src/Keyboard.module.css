@@ -24,3 +24,8 @@
 .btn:focus:not(:disabled) {
   background-color: hsl(200, 100%, 75%);
 }
+/* 
+.btn{
+  padding-left: 3rem;
+  padding-right: 3rem;
+} */

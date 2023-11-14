@@ -26,6 +26,9 @@ function App() {
     [guessedLetters, isLoser, isWinner]
   );
 
+  const refreshPage = (): void => {
+    window.location.reload();
+  };
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       const key = e.key;
@@ -67,11 +70,12 @@ function App() {
         gap: "2rem",
         margin: "0, auto",
         alignItems: "center",
+        position: "relative",
       }}
     >
       <div style={{ fontSize: "2rem", textAlign: "center" }}>
-        {isWinner && "You won! - refresh to play again"}
-        {isLoser && "You lost! - refresh to play again"}
+        {isWinner && "You won! - click on restart button to play again"}
+        {isLoser && "You lost! - click on restart button to play again"}
       </div>
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
       <HangmanWord reveal={isLoser} guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
@@ -82,6 +86,22 @@ function App() {
           inactiveLetters={incorrectLetters}
           addGuessedLetter={addGuessedLetter}
         />
+        <button
+          style={{
+            width: " fit-content",
+            height: "fit-content",
+            paddingLeft: "3rem",
+            paddingRight: "3rem",
+            paddingTop: "1rem",
+            paddingBottom: "1rem",
+            inset: "0",
+            top: "4rem",
+            position: "absolute",
+          }}
+          onClick={refreshPage}
+        >
+          Restart
+        </button>
       </div>
     </div>
   );
